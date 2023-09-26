@@ -4,6 +4,7 @@ const User = require('../models/userModel'); // Import the User model
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const checkAuth = require('../middleware/checkAuth')
+const Post = require('../models/postModel')
 
 // Define sign-up route
 router.post('/signUp', async (req, res) => {
@@ -55,9 +56,16 @@ router.get('/profile',checkAuth, async (req, res) => {
       if (user) {
         const userProfile = {
           name: user.username,
-          email: user.email
-          // Add more user profile data if needed
+          email: user.email,
+          // Initialize the profilePicture as null
+        profilePicture: null,
         };
+
+        const userPost = await Post.findOne({ author: userId });
+        if (userPost) {
+          userProfile.profilePicture = userPost.image;
+        }
+  
         res.status(200).json({ user: userProfile });
       } else {
         res.status(404).json({ message: 'User not found' });
