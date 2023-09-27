@@ -1,4 +1,6 @@
 # sfs-be
+here is the link to app
+https://sfs-app.onrender.com/
 
 
 ```markdown
@@ -55,6 +57,26 @@ The frontend of this application is a separate Vite app, which you've already co
    ```bash
    npm install
    ```
+## Configuration
+
+This application uses environment variables for configuration. You should create an `.env` file in the root directory of your Node.js backend project with the following variables:
+
+- `MONGODB_URL`: The MongoDB database connection URL.
+- `JWT_SECRET_KEY`: The secret key for JWT token generation.
+- `CLOUDINARY_CLOUD_NAME`: Your Cloudinary cloud name.
+- `CLOUDINARY_API_KEY`: Your Cloudinary API key.
+- `CLOUDINARY_API_SECRET`: Your Cloudinary API secret.
+
+Make sure to populate these variables in your `.env` file with your actual credentials.
+
+Example `.env` file:
+
+```env
+MONGODB_URL=your_mongodb_url
+JWT_SECRET_KEY=your_jwt_secret_key
+CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
 
 4. Build and run the frontend:
 
